@@ -1,7 +1,7 @@
 scripts:
   deps:
     desc: Update dependencies with ensuring pass tests
-    cmd: udd deps.ts --test="vr test"
+    cmd: udd *.ts --test="vr test"
 
   lint:
     desc: Runs lint
