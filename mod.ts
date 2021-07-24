@@ -35,3 +35,10 @@ export function tag(
 
   return `<${tagName}${attrs.join("")}>${close}`;
 }
+
+// character references
+export const NBSP = "&nbsp;";
+export const LT = "&lt;";
+export const GT = "&gt;";
+export const AMP = "&amp;";
+export const QUOT = "&quot;";
