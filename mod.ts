@@ -1,11 +1,12 @@
 export function tag(
   tagName: string,
-  attributes: { [attr: string]: string },
+  attributesOrFirstChild?: { [attr: string]: string } | string,
   ...children: string[]
 ): string {
   if (/\s/.test(tagName)) {
     throw new Error("tagName has whitespace character.");
   }
+
   const isVoidTag = [
     "area",
     "base",
@@ -22,10 +23,15 @@ export function tag(
     "source",
   ].includes(tagName);
 
-  const attrs = Object.entries(attributes)
-    .reduce((acc, [k, v]) => `${acc} ${k}="${v}"`, "");
+  const attrs: string[] = [];
+  if (typeof attributesOrFirstChild === "string") {
+    children.unshift(attributesOrFirstChild);
+  } else if (attributesOrFirstChild != null) {
+    Object.entries(attributesOrFirstChild)
+      .forEach(([k, v]) => attrs.push(` ${k}="${v}"`));
+  }
 
   const close = isVoidTag ? "" : `${children.join("")}</${tagName}>`;
 
-  return `<${tagName}${attrs}>${close}`;
+  return `<${tagName}${attrs.join("")}>${close}`;
 }
