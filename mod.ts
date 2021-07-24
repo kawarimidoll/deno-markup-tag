@@ -1,7 +1,7 @@
 export function tag(
   tagName: string,
-  attributesOrFirstChild?: { [attr: string]: string } | string,
-  ...children: string[]
+  attributesOrFirstChild?: Record<string, string> | string,
+  ...children: Array<string>
 ): string {
   if (/\s/.test(tagName)) {
     throw new Error("tagName has whitespace characters.");
@@ -23,7 +23,7 @@ export function tag(
     "source",
   ].includes(tagName);
 
-  const attrs: string[] = [];
+  const attrs: Array<string> = [];
   if (typeof attributesOrFirstChild === "string") {
     children.unshift(attributesOrFirstChild);
   } else if (attributesOrFirstChild != null) {
