@@ -1,3 +1,35 @@
+/**
+ * Render markup tag.
+ * @param tagName (required)
+ * @param attributes (optional)
+ * @param children (optional)
+ * @return rendered tag
+ *
+ * Examples:
+ *
+ * ```ts
+ * import { tag } from "./mod.ts"
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ *
+ * // common usage
+ * assertEquals(
+ *   tag("div", { id: "foo", class: "bar" }, "Hello world!"),
+ *   `<div id="foo" class="bar">Hello world!</div>`,
+ * );
+ *
+ * // void (no-close) tag
+ * assertEquals(
+ *   tag("meta", { charset: "utf-8" }),
+ *   `<meta charset="utf-8">`,
+ * );
+ *
+ * // nested tags
+ * assertEquals(
+ *   tag( "ul", { class: "nav" }, tag("li", "first"), tag("li", "second")),
+ *   `<ul class="nav"><li>first</li><li>second</li></ul>`,
+ * );
+ * ```
+ */
 export function tag(
   tagName: string,
   attributesOrFirstChild?: Record<string, string> | string,
