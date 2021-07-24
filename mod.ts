@@ -1,6 +1,28 @@
-import { Logger } from "./logger.ts";
+export function tag(
+  tagName: string,
+  attributes: { [attr: string]: string },
+  ...children: string[]
+): string {
+  const isVoidTag = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+  ].includes(tagName);
 
-Logger.debug("This log is debug!");
-Logger.info("This log is info!");
-Logger.warning("This log is warning!");
-Logger.error("This log is error!");
+  const attrs = Object.entries(attributes)
+    .reduce((acc, [k, v]) => `${acc} ${k}="${v}"`, "");
+
+  const close = isVoidTag ? "" : `${children.join("")}</${tagName}>`;
+
+  return `<${tagName}${attrs}>${close}`;
+}
