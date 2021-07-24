@@ -16,11 +16,12 @@ export function tag(
     "hr",
     "img",
     "input",
-    "keygen",
     "link",
     "meta",
     "param",
     "source",
+    "track",
+    "wbr",
   ].includes(tagName);
 
   const attrs: Array<string> = [];
