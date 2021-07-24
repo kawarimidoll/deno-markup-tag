@@ -18,7 +18,7 @@ scripts:
           [ -z "$FILES" ] && exit 0
           echo "$FILES" | xargs deno lint
           echo "$FILES" | xargs deno fmt
-          echo "$FILES" | xargs git add
+          # echo "$FILES" | xargs git add
     gitHook: pre-commit
 
   test:
