@@ -3,6 +3,9 @@ export function tag(
   attributes: { [attr: string]: string },
   ...children: string[]
 ): string {
+  if (/\s/.test(tagName)) {
+    throw new Error("tagName has whitespace character.");
+  }
   const isVoidTag = [
     "area",
     "base",
