@@ -20,6 +20,14 @@ Deno.test("render void tag", () => {
     tag("meta", { charset: "utf-8" }),
     `<meta charset="utf-8">`,
   );
+  assertEquals(
+    tag("input", {
+      type: "text",
+      name: "name",
+      placeholder: "input your name",
+    }),
+    `<input type="text" name="name" placeholder="input your name">`,
+  );
 });
 
 Deno.test("render tag without attributes", () => {
@@ -45,10 +53,23 @@ Deno.test("render nested tag", () => {
   assertEquals(
     tag(
       "ul",
+      { class: "nav" },
       tag("li", "first element"),
       tag("li", "second element"),
     ),
-    `<ul><li>first element</li><li>second element</li></ul>`,
+    `<ul class="nav"><li>first element</li><li>second element</li></ul>`,
+  );
+  assertEquals(
+    tag(
+      "div",
+      { class: "container" },
+      tag(
+        "article",
+        { class: "post" },
+        tag("p", "awesome text"),
+      ),
+    ),
+    `<div class="container"><article class="post"><p>awesome text</p></article></div>`,
   );
 });
 
@@ -58,6 +79,6 @@ Deno.test("throw error when tag has whitespace characters", () => {
       tag("separate tag", { id: "foo" }, "Hello world!");
     },
     Error,
-    "tagName has whitespace character.",
+    "tagName has whitespace characters.",
   );
 });
