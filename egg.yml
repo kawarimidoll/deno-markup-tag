@@ -3,7 +3,7 @@ name: markup-tag
 entry: ./mod.ts
 description: Render markup tags easily
 homepage: 'https://github.com/kawarimidoll/deno-markup-tag'
-version: 0.1.0
+version: 0.1.1
 releaseType: null
 unstable: false
 unlisted: false
