@@ -1,0 +1,18 @@
+$schema: 'https://x.nest.land/eggs@0.3.8/src/schema.json'
+name: markup-tag
+entry: ./mod.ts
+description: Render markup tags easily
+homepage: 'https://github.com/kawarimidoll/deno-markup-tag'
+version: 0.1.0
+releaseType: null
+unstable: false
+unlisted: false
+files:
+  - ./mod.ts
+  - ./README.md
+  - ./LICENSE
+ignore: []
+checkFormat: false
+checkTests: false
+checkInstallation: false
+check: true
