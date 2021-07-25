@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: denoland/setup-deno@master
+      - uses: denoland/setup-deno@v1
       - run: deno install -Af --unstable https://x.nest.land/eggs@0.3.8/eggs.ts
       - run: |
           export PATH="/home/runner/.deno/bin:$PATH"
