@@ -5,11 +5,11 @@ scripts:
 
   lint:
     desc: Runs lint
-    cmd: deno lint
+    cmd: deno lint --ignore=cov_profile
 
   fmt:
     desc: Runs format
-    cmd: deno fmt
+    cmd: deno fmt --ignore=cov_profile
 
   pre-commit:
     desc: Lints and formats staged files
