@@ -73,6 +73,17 @@ Deno.test("render nested tag", () => {
   );
 });
 
+Deno.test("render svg tag", () => {
+  assertEquals(
+    tag(
+      "svg",
+      { width: 100, height: 100 },
+      tag("rect", { x: 20, y: 20, fill: "#a33" }),
+    ),
+    `<svg width="100" height="100"><rect x="20" y="20" fill="#a33"></rect></svg>`,
+  );
+});
+
 Deno.test("throw error when tag has whitespace characters", () => {
   assertThrows(
     () => {
