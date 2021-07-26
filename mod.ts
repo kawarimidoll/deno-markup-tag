@@ -32,7 +32,7 @@
  */
 export function tag(
   tagName: string,
-  attributesOrFirstChild?: Record<string, string> | string,
+  attributesOrFirstChild?: Record<string, string | number> | string,
   ...children: Array<string>
 ): string {
   if (/\s/.test(tagName)) {
