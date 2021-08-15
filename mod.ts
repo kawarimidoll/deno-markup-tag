@@ -81,7 +81,7 @@ export const AMP = "&amp;";
 export const QUOT = "&quot;";
 
 /**
- * Sanitize '&', '<', '>' and '"' in string
+ * Sanitize '&', '<', '>' and '"' in string.
  * @param string (optional)
  * @param SanitizeOption (optional)
  * @return sanitized string

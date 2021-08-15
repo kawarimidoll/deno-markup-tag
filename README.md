@@ -31,6 +31,8 @@ import { tag } from "https://raw.githubusercontent.com/kawarimidoll/deno-markup-
 
 ### tag
 
+Render markup tag.
+
 ```ts
 // common usage
 assertEquals(
@@ -58,4 +60,25 @@ const LT = "&lt;";
 const GT = "&gt;";
 const AMP = "&amp;";
 const QUOT = "&quot;";
+```
+
+### sanitize
+
+Sanitize '&', '<', '>' and '"' in string.
+
+```ts
+import { sanitize } from "./mod.ts"
+import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ *
+// common usage
+assertEquals(
+  sanitize(`<img src="https://www.example.com?width=10&height=10">`),
+  "&lt;img src=&quot;https://www.example.com?width=10&amp;height=10&quot;&gt;",
+);
+ *
+// ignore sanitizing specific characters
+assertEquals(
+  sanitize("<br>", { lt:false, gt:false }),
+  "<br>",
+);
 ```
