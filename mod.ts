@@ -8,7 +8,7 @@
  * Examples:
  *
  * ```ts
- * import { tag } from "./mod.ts"
+ * import { tag } from "https://deno.land/x/markup_tag/mod.ts";
  * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
  *
  * // common usage
@@ -81,7 +81,7 @@ export const AMP = "&amp;";
 export const QUOT = "&quot;";
 
 /**
- * Sanitize '&', '<', '>' and '"' in string.
+ * Sanitize `&`, `<`, `>` and `"` in string.
  * @param string (optional)
  * @param SanitizeOption (optional)
  * @return sanitized string
@@ -91,7 +91,7 @@ export const QUOT = "&quot;";
  * Examples:
  *
  * ```ts
- * import { sanitize } from "./mod.ts"
+ * import { sanitize } from "https://deno.land/x/markup_tag/mod.ts";
  * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
  *
  * // common usage
@@ -101,10 +101,7 @@ export const QUOT = "&quot;";
  * );
  *
  * // ignore sanitizing specific characters
- * assertEquals(
- *   sanitize("<br>", { lt:false, gt:false }),
- *   "<br>",
- * );
+ * assertEquals(sanitize("<br>", { lt: false, gt: false }), "<br>");
  * ```
  */
 export function sanitize(
