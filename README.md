@@ -14,19 +14,19 @@
 From deno.land/x:
 
 ```ts
-import { tag } from "https://deno.land/x/markup_tag@0.1.2/mod.ts";
+import { tag } from "https://deno.land/x/markup_tag@0.2.0/mod.ts";
 ```
 
 From nest.land:
 
 ```ts
-import { tag } from "https://x.nest.land/markup-tag@0.1.2/mod.ts";
+import { tag } from "https://x.nest.land/markup-tag@0.2.0/mod.ts";
 ```
 
 From GitHub:
 
 ```ts
-import { tag } from "https://raw.githubusercontent.com/kawarimidoll/deno-markup-tag/0.1.2/mod.ts";
+import { tag } from "https://raw.githubusercontent.com/kawarimidoll/deno-markup-tag/0.2.0/mod.ts";
 ```
 
 ### tag
