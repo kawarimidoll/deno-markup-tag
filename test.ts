@@ -2,7 +2,7 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.102.0/testing/asserts.ts";
-import { tag } from "./mod.ts";
+import { sanitize, tag } from "./mod.ts";
 
 Deno.test("render tag", () => {
   assertEquals(
@@ -91,5 +91,26 @@ Deno.test("throw error when tag has whitespace characters", () => {
     },
     Error,
     "tagName has whitespace characters.",
+  );
+});
+
+Deno.test("sanitize string", () => {
+  assertEquals(
+    sanitize(`<img src="https://www.example.com?width=10&height=10">`),
+    "&lt;img src=&quot;https://www.example.com?width=10&amp;height=10&quot;&gt;",
+  );
+
+  // empty inputs
+  assertEquals(sanitize(), "");
+});
+
+Deno.test("ignore to sanitize", () => {
+  assertEquals(
+    sanitize(`<span>"ok" & ng</span>`, { lt: false, gt: false }),
+    `<span>&quot;ok&quot; &amp; ng</span>`,
+  );
+  assertEquals(
+    sanitize(`<span>"ok" & ng</span>`, { amp: false, quot: false }),
+    `&lt;span&gt;"ok" & ng&lt;/span&gt;`,
   );
 });
