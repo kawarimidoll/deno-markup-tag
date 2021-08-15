@@ -35,6 +35,10 @@ export function tag(
   attributesOrFirstChild?: Record<string, string | number> | string,
   ...children: Array<string>
 ): string {
+  if (!tagName) {
+    throw new Error("tagName is empty.");
+  }
+
   if (/\s/.test(tagName)) {
     throw new Error("tagName has whitespace characters.");
   }

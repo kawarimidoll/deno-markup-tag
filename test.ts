@@ -84,6 +84,16 @@ Deno.test("render svg tag", () => {
   );
 });
 
+Deno.test("throw error when tag is empty", () => {
+  assertThrows(
+    () => {
+      tag("");
+    },
+    Error,
+    "tagName is empty.",
+  );
+});
+
 Deno.test("throw error when tag has whitespace characters", () => {
   assertThrows(
     () => {
