@@ -75,3 +75,49 @@ export const LT = "&lt;";
 export const GT = "&gt;";
 export const AMP = "&amp;";
 export const QUOT = "&quot;";
+
+/**
+ * Sanitize '&', '<', '>' and '"' in string
+ * @param string (optional)
+ * @param SanitizeOption (optional)
+ * @return sanitized string
+ *
+ * Use SanitizeOption like `{ amp: false }` to ignore sanitizing.
+ *
+ * Examples:
+ *
+ * ```ts
+ * import { sanitize } from "./mod.ts"
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ *
+ * // common usage
+ * assertEquals(
+ *   sanitize(`<img src="https://www.example.com?width=10&height=10">`),
+ *   "&lt;img src=&quot;https://www.example.com?width=10&amp;height=10&quot;&gt;",
+ * );
+ *
+ * // ignore sanitizing specific characters
+ * assertEquals(
+ *   sanitize("<br>", { lt:false, gt:false }),
+ *   "<br>",
+ * );
+ * ```
+ */
+export function sanitize(
+  str = "",
+  { amp = true, lt = true, gt = true, quot = true } = {},
+): string {
+  if (amp) {
+    str = str.replaceAll("&", AMP);
+  }
+  if (lt) {
+    str = str.replaceAll("<", LT);
+  }
+  if (gt) {
+    str = str.replaceAll(">", GT);
+  }
+  if (quot) {
+    str = str.replaceAll(`"`, QUOT);
+  }
+  return str;
+}
