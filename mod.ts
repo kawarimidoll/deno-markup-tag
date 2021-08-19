@@ -73,11 +73,29 @@ export function tag(
   return `<${tagName}${attrs.join("")}>${close}`;
 }
 
-// character references
+/**
+ * character reference to no-break space
+ */
 export const NBSP = "&nbsp;";
+
+/**
+ * character reference to <
+ */
 export const LT = "&lt;";
+
+/**
+ * character reference to >
+ */
 export const GT = "&gt;";
+
+/**
+ * character reference to &
+ */
 export const AMP = "&amp;";
+
+/**
+ * character reference to "
+ */
 export const QUOT = "&quot;";
 
 /**
