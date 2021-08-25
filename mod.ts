@@ -79,28 +79,28 @@ export function tag(
 export const NBSP = "&nbsp;";
 
 /**
- * character reference to <
+ * character reference to `<`
  */
 export const LT = "&lt;";
 
 /**
- * character reference to >
+ * character reference to `>`
  */
 export const GT = "&gt;";
 
 /**
- * character reference to &
+ * character reference to `&`
  */
 export const AMP = "&amp;";
 
 /**
- * character reference to "
+ * character reference to `"`
  */
 export const QUOT = "&quot;";
 
 /**
  * Sanitize `&`, `<`, `>` and `"` in string.
- * @param string (optional)
+ * @param str (optional)
  * @param SanitizeOption (optional)
  * @return sanitized string
  *
@@ -124,7 +124,8 @@ export const QUOT = "&quot;";
  */
 export function sanitize(
   str = "",
-  { amp = true, lt = true, gt = true, quot = true } = {},
+  { amp = true, lt = true, gt = true, quot = true }: Record<string, boolean> =
+    {},
 ): string {
   if (amp) {
     str = str.replaceAll("&", AMP);
