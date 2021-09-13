@@ -13,22 +13,22 @@
 
 ### Import
 
-From deno.land/x:
+From [deno.land/x](https://deno.land/x):
 
 ```ts
 import { tag } from "https://deno.land/x/markup_tag@0.3.0/mod.ts";
 ```
 
-From nest.land:
+From [x.nest.land](http://nest.land):
 
 ```ts
 import { tag } from "https://x.nest.land/markup-tag@0.3.0/mod.ts";
 ```
 
-From GitHub:
+From [pax.deno.dev](http://pax.deno.dev):
 
 ```ts
-import { tag } from "https://raw.githubusercontent.com/kawarimidoll/deno-markup-tag/0.3.0/mod.ts";
+import { tag } from "https://pax.deno.dev/kawarimidoll/deno-markup-tag@0.3.0";
 ```
 
 ### tag
@@ -49,6 +49,18 @@ assertEquals(tag("meta", { charset: "utf-8" }), `<meta charset="utf-8">`);
 assertEquals(
   tag("ul", { class: "nav" }, tag("li", "first"), tag("li", "second")),
   `<ul class="nav"><li>first</li><li>second</li></ul>`,
+);
+
+// boolean attributes
+assertEquals(
+  tag("button", { type: "button", disabled: true }, "disabled"),
+  `<button type="button" disabled>disabled</button>`,
+);
+
+// skip attributes
+assertEquals(
+  tag("input", { type: "text", readonly: false }),
+  `<input type="text">`,
 );
 ```
 

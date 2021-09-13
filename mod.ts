@@ -34,6 +34,12 @@
  *   tag("button", { type: "button", disabled: true }, "disabled"),
  *   `<button type="button" disabled>disabled</button>`,
  * );
+
+ * // skip attributes
+ * assertEquals(
+ *   tag("input", { type: "text", readonly: false }),
+ *   `<input type="text">`,
+ * );
  * ```
  */
 export function tag(
