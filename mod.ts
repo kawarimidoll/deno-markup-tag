@@ -32,7 +32,7 @@
  */
 export function tag(
   tagName: string,
-  attributesOrFirstChild?: Record<string, string | number> | string,
+  attributesOrFirstChild?: Record<string, string | number | boolean> | string,
   ...children: Array<string>
 ): string {
   if (!tagName) {
@@ -65,7 +65,16 @@ export function tag(
     children.unshift(attributesOrFirstChild);
   } else if (attributesOrFirstChild != null) {
     Object.entries(attributesOrFirstChild)
-      .forEach(([k, v]) => attrs.push(` ${k}="${v}"`));
+      .forEach(([k, v]) => {
+        if (typeof v !== "boolean") {
+          // add the pair of key and value when the attribute is string or number
+          attrs.push(` ${k}="${v}"`);
+        } else if (v) {
+          // add just key key when the attribute is true
+          attrs.push(` ${k}`);
+        }
+        // skip when the attribute is false
+      });
   }
 
   const close = isVoidTag ? "" : `${children.join("")}</${tagName}>`;
