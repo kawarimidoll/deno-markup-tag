@@ -84,6 +84,17 @@ Deno.test("render svg tag", () => {
   );
 });
 
+Deno.test("render boolean attributes", () => {
+  assertEquals(
+    tag("button", { type: "button", disabled: false }, "enabled"),
+    `<button type="button">enabled</button>`,
+  );
+  assertEquals(
+    tag("button", { type: "button", disabled: true }, "disabled"),
+    `<button type="button" disabled>disabled</button>`,
+  );
+});
+
 Deno.test("throw error when tag is empty", () => {
   assertThrows(
     () => {
