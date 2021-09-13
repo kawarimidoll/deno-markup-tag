@@ -28,6 +28,12 @@
  *   tag( "ul", { class: "nav" }, tag("li", "first"), tag("li", "second")),
  *   `<ul class="nav"><li>first</li><li>second</li></ul>`,
  * );
+ *
+ * // boolean attributes
+ * assertEquals(
+ *   tag("button", { type: "button", disabled: true }, "disabled"),
+ *   `<button type="button" disabled>disabled</button>`,
+ * );
  * ```
  */
 export function tag(
