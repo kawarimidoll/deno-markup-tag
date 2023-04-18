@@ -1,3 +1,23 @@
+// internal helper
+function isVoidTag(tagName: string): boolean {
+  return [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+  ].includes(tagName);
+}
+
 /**
  * Render markup tag.
  * @param tagName (required)
@@ -55,23 +75,6 @@ export function tag(
     throw new Error("tagName has whitespace characters.");
   }
 
-  const isVoidTag = [
-    "area",
-    "base",
-    "br",
-    "col",
-    "embed",
-    "hr",
-    "img",
-    "input",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr",
-  ].includes(tagName);
-
   const attrs: Array<string> = [];
   if (typeof attributesOrFirstChild === "string") {
     children.unshift(attributesOrFirstChild);
@@ -89,7 +92,7 @@ export function tag(
       });
   }
 
-  const close = isVoidTag ? "" : `${children.join("")}</${tagName}>`;
+  const close = isVoidTag(tagName) ? "" : `${children.join("")}</${tagName}>`;
 
   return `<${tagName}${attrs.join("")}>${close}`;
 }
