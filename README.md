@@ -16,19 +16,19 @@
 From [deno.land/x](https://deno.land/x):
 
 ```ts
-import { tag } from "https://deno.land/x/markup_tag@0.3.0/mod.ts";
+import { tag } from "https://deno.land/x/markup_tag@0.4.0/mod.ts";
 ```
 
 From [x.nest.land](http://nest.land):
 
 ```ts
-import { tag } from "https://x.nest.land/markup-tag@0.3.0/mod.ts";
+import { tag } from "https://x.nest.land/markup-tag@0.4.0/mod.ts";
 ```
 
 From [pax.deno.dev](http://pax.deno.dev):
 
 ```ts
-import { tag } from "https://pax.deno.dev/kawarimidoll/deno-markup-tag@0.3.0";
+import { tag } from "https://pax.deno.dev/kawarimidoll/deno-markup-tag@0.4.0";
 ```
 
 ### tag
