@@ -2,7 +2,7 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.183.0/testing/asserts.ts";
-import { sanitize, tag } from "./mod.ts";
+import { sanitize, tag, tagNoVoid } from "./mod.ts";
 
 Deno.test("render tag", () => {
   assertEquals(
@@ -112,6 +112,13 @@ Deno.test("throw error when tag has whitespace characters", () => {
     },
     Error,
     "tagName has whitespace characters.",
+  );
+});
+
+Deno.test("always add closing tag", () => {
+  assertEquals(
+    tagNoVoid("link", "http://example.com"),
+    `<link>http://example.com</link>`,
   );
 });
 
