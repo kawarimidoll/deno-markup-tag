@@ -98,6 +98,48 @@ export function tag(
 }
 
 /**
+ * Render markup tag, always add closing tag unlike tag().
+ * @param tagName (required)
+ * @param attributes (optional)
+ * @param children (optional)
+ * @return rendered tag
+ *
+ * Examples:
+ *
+ * ```ts
+ * import { tag, tagNoVoid } from "https://deno.land/x/markup_tag/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ *
+ * // in tag(), skip attributes in void tags like 'link'
+ * assertEquals(
+ *   tag("link", "http://example.com"),
+ *   `<link>`,
+ * );
+ *
+ * // in tagNoVoid(), always add closing tag
+ * assertEquals(
+ *   tag("link", "http://example.com"),
+ *   `<link>http://example.com</link>`,
+ * );
+ * ```
+ */
+export function tagNoVoid(
+  tagName: string,
+  attributesOrFirstChild?: Record<string, string | number | boolean> | string,
+  ...children: Array<string>
+): string {
+  if (isVoidTag(tagName)) {
+    if (typeof attributesOrFirstChild === "string") {
+      children.unshift(attributesOrFirstChild);
+      attributesOrFirstChild = {};
+    }
+    return tag(tagName, attributesOrFirstChild) +
+      `${children.join("")}</${tagName}>`;
+  }
+  return tag(tagName, attributesOrFirstChild, ...children);
+}
+
+/**
  * character reference to no-break space
  */
 export const NBSP = "&nbsp;";
