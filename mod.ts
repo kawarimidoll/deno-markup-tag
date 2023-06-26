@@ -118,7 +118,7 @@ export function tag(
  *
  * // in tagNoVoid(), always add closing tag
  * assertEquals(
- *   tag("link", "http://example.com"),
+ *   tagNoVoid("link", "http://example.com"),
  *   `<link>http://example.com</link>`,
  * );
  * ```
