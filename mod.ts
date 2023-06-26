@@ -140,6 +140,53 @@ export function tagNoVoid(
 }
 
 /**
+ * Render markup tag, always remove closing tag unlike tag().
+ * @param tagName (required)
+ * @param attributes (optional)
+ * @return rendered tag
+ *
+ * Examples:
+ *
+ * ```ts
+ * import { tag, tagVoid } from "https://deno.land/x/markup_tag/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ *
+ * // in tag(), add close tag like 'div'
+ * assertEquals(
+ *   tag("div", { class: "red" }),
+ *   `<div class="red"></div>`,
+ * );
+ *
+ * // in tagVoid(), always remove closing tag
+ * assertEquals(
+ *   tagVoid("div", { class: "red" }),
+ *   `<div class="red">`,
+ * );
+ * ```
+ */
+export function tagVoid(
+  tagName: string,
+  attributes?: Record<string, string | number | boolean>,
+): string {
+  const attrs: Array<string> = [];
+  if (attributes) {
+    Object.entries(attributes)
+      .forEach(([k, v]) => {
+        if (typeof v !== "boolean") {
+          // add the pair of key and value when the attribute is string or number
+          attrs.push(` ${k}="${v}"`);
+        } else if (v) {
+          // add just key key when the attribute is true
+          attrs.push(` ${k}`);
+        }
+        // skip when the attribute is false
+      });
+  }
+
+  return `<${tagName}${attrs.join("")}>`;
+}
+
+/**
  * character reference to no-break space
  */
 export const NBSP = "&nbsp;";
