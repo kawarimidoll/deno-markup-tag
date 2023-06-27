@@ -217,8 +217,12 @@ export const QUOT = "&quot;";
  */
 export function sanitize(
   str = "",
-  { amp = true, lt = true, gt = true, quot = true }: Record<string, boolean> =
-    {},
+  { amp = true, lt = true, gt = true, quot = true }: {
+    amp?: boolean;
+    lt?: boolean;
+    gt?: boolean;
+    quot?: boolean;
+  } = {},
 ): string {
   if (amp) {
     str = str.replaceAll("&", AMP);
