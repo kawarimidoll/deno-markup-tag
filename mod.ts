@@ -1,5 +1,5 @@
 // types
-export type Attributes = Record<string, string | number | boolean>;
+export type Attributes = { [key: string]: string | number | boolean };
 
 // internal helper
 function isVoidTag(tagName: string): boolean {
@@ -10,8 +10,8 @@ function isVoidTag(tagName: string): boolean {
   ].includes(tagName);
 }
 
-function parseAttributes(attributes: Attributes = {}): Array<string> {
-  const attrs: Array<string> = [];
+function parseAttributes(attributes: Attributes = {}): string[] {
+  const attrs: string[] = [];
   Object.entries(attributes)
     .forEach(([k, v]) => {
       if (typeof v !== "boolean") {
@@ -74,7 +74,7 @@ function parseAttributes(attributes: Attributes = {}): Array<string> {
 export function tag(
   tagName: string,
   attributesOrFirstChild?: Attributes | string,
-  ...children: Array<string>
+  ...children: string[]
 ): string {
   if (!tagName) {
     throw new Error("tagName is empty.");
@@ -123,7 +123,7 @@ export function tag(
 export function tagNoVoid(
   tagName: string,
   attributesOrFirstChild?: Attributes | string,
-  ...children: Array<string>
+  ...children: string[]
 ): string {
   if (isVoidTag(tagName)) {
     if (typeof attributesOrFirstChild === "string") {
@@ -208,14 +208,14 @@ export function generateTag(
   type: "noVoid",
 ): (
   attributesOrFirstChild?: Attributes | string,
-  ...children: Array<string>
+  ...children: string[]
 ) => string;
 export function generateTag(
   tagName: string,
   type?: "normal",
 ): (
   attributesOrFirstChild?: Attributes | string,
-  ...children: Array<string>
+  ...children: string[]
 ) => string;
 export function generateTag(
   tagName: string,
@@ -229,14 +229,14 @@ export function generateTag(
   if (type === "noVoid") {
     return function (
       attributesOrFirstChild?: Attributes | string,
-      ...children: Array<string>
+      ...children: string[]
     ) {
       return tagNoVoid(tagName, attributesOrFirstChild, ...children);
     };
   }
   return function (
     attributesOrFirstChild?: Attributes | string,
-    ...children: Array<string>
+    ...children: string[]
   ) {
     return tag(tagName, attributesOrFirstChild, ...children);
   };
