@@ -84,13 +84,11 @@ export function tag(
     throw new Error("tagName has whitespace characters.");
   }
 
-  let attrs: Array<string> = [];
   if (typeof attributesOrFirstChild === "string") {
     children.unshift(attributesOrFirstChild);
-  } else {
-    attrs = parseAttributes(attributesOrFirstChild);
+    attributesOrFirstChild = {};
   }
-
+  const attrs = parseAttributes(attributesOrFirstChild);
   const close = isVoidTag(tagName) ? "" : `${children.join("")}</${tagName}>`;
 
   return `<${tagName}${attrs.join("")}>${close}`;
