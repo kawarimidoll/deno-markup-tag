@@ -16,7 +16,8 @@ function parseAttributes(attributes: Attributes = {}): Array<string> {
     .forEach(([k, v]) => {
       if (typeof v !== "boolean") {
         // add the pair of key and value when the attribute is string or number
-        attrs.push(` ${k}="${v}"`);
+        const value = sanitize(`${v}`, { amp: false, lt: false, gt: false });
+        attrs.push(` ${k}="${value}"`);
       } else if (v) {
         // add just key key when the attribute is true
         attrs.push(` ${k}`);
