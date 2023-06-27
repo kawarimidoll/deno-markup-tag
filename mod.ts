@@ -1,3 +1,6 @@
+// types
+export type Attributes = Record<string, string | number | boolean>;
+
 // internal helper
 function isVoidTag(tagName: string): boolean {
   // deno-fmt-ignore
@@ -7,9 +10,7 @@ function isVoidTag(tagName: string): boolean {
   ].includes(tagName);
 }
 
-function parseAttributes(
-  attributes: Record<string, string | number | boolean> = {},
-): Array<string> {
+function parseAttributes(attributes: Attributes = {}): Array<string> {
   const attrs: Array<string> = [];
   Object.entries(attributes)
     .forEach(([k, v]) => {
@@ -71,7 +72,7 @@ function parseAttributes(
  */
 export function tag(
   tagName: string,
-  attributesOrFirstChild?: Record<string, string | number | boolean> | string,
+  attributesOrFirstChild?: Attributes | string,
   ...children: Array<string>
 ): string {
   if (!tagName) {
@@ -122,7 +123,7 @@ export function tag(
  */
 export function tagNoVoid(
   tagName: string,
-  attributesOrFirstChild?: Record<string, string | number | boolean> | string,
+  attributesOrFirstChild?: Attributes | string,
   ...children: Array<string>
 ): string {
   if (isVoidTag(tagName)) {
@@ -161,10 +162,7 @@ export function tagNoVoid(
  * );
  * ```
  */
-export function tagVoid(
-  tagName: string,
-  attributes?: Record<string, string | number | boolean>,
-): string {
+export function tagVoid(tagName: string, attributes?: Attributes): string {
   return `<${tagName}${parseAttributes(attributes).join("")}>`;
 }
 
