@@ -1,20 +1,9 @@
 // internal helper
 function isVoidTag(tagName: string): boolean {
+  // deno-fmt-ignore
   return [
-    "area",
-    "base",
-    "br",
-    "col",
-    "embed",
-    "hr",
-    "img",
-    "input",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr",
+    "area", "base", "br", "col", "embed", "hr", "img",
+    "input", "link", "meta", "param", "source", "track", "wbr",
   ].includes(tagName);
 }
 
