@@ -2,7 +2,7 @@ import {
   assertEquals,
   assertThrows,
 } from "https://deno.land/std@0.192.0/testing/asserts.ts";
-import { sanitize, tag, tagNoVoid, tagVoid } from "./mod.ts";
+import { generateTag, sanitize, tag, tagNoVoid, tagVoid } from "./mod.ts";
 
 Deno.test("render tag", () => {
   assertEquals(
@@ -126,6 +126,28 @@ Deno.test("always add closing tag", () => {
   assertEquals(
     tagVoid("div", { class: "red" }),
     `<div class="red">`,
+  );
+});
+
+Deno.test("generate tag", () => {
+  const div = generateTag("div");
+  assertEquals(
+    div({ id: "foo", class: "bar" }, "Hello world!"),
+    `<div id="foo" class="bar">Hello world!</div>`,
+  );
+});
+Deno.test("generate tagNoVoid", () => {
+  const link = generateTag("link", "noVoid");
+  assertEquals(
+    link("http://example.com"),
+    `<link>http://example.com</link>`,
+  );
+});
+Deno.test("generate tagVoid", () => {
+  const span = generateTag("span", "void");
+  assertEquals(
+    span({ class: "red" }),
+    `<span class="red">`,
   );
 });
 

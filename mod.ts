@@ -167,6 +167,83 @@ export function tagVoid(tagName: string, attributes?: Attributes): string {
 }
 
 /**
+ * Generate markup tag functions.
+ * @param tagName (required)
+ * @param type (optional)
+ * @return markup tag function
+ * @see tag()
+ * @see tagNoVoid()
+ * @see tagVoid()
+ *
+ * Examples:
+ *
+ * ```ts
+ * import { generateTag } from "https://deno.land/x/markup_tag/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ *
+ * const div = generateTag("div");
+ * assertEquals(
+ *   div({ id: "foo", class: "bar" }, "Hello world!"),
+ *   `<div id="foo" class="bar">Hello world!</div>`,
+ * );
+ *
+ * const link = generateTag("link", "noVoid");
+ * assertEquals(
+ *   link("http://example.com"),
+ *   `<link>http://example.com</link>`,
+ * );
+ *
+ * const span = generateTag("span", "void");
+ * assertEquals(
+ *   tagVoid("span", { class: "red" }),
+ *   `<span class="red">`,
+ * );
+ * ```
+ */
+export function generateTag(
+  tagName: string,
+  type: "void",
+): (attributes?: Attributes) => string;
+export function generateTag(
+  tagName: string,
+  type: "noVoid",
+): (
+  attributesOrFirstChild?: Attributes | string,
+  ...children: Array<string>
+) => string;
+export function generateTag(
+  tagName: string,
+  type?: "normal",
+): (
+  attributesOrFirstChild?: Attributes | string,
+  ...children: Array<string>
+) => string;
+export function generateTag(
+  tagName: string,
+  type?: "normal" | "void" | "noVoid",
+) {
+  if (type === "void") {
+    return function (attributes?: Attributes) {
+      return tagVoid(tagName, attributes);
+    };
+  }
+  if (type === "noVoid") {
+    return function (
+      attributesOrFirstChild?: Attributes | string,
+      ...children: Array<string>
+    ) {
+      return tagNoVoid(tagName, attributesOrFirstChild, ...children);
+    };
+  }
+  return function (
+    attributesOrFirstChild?: Attributes | string,
+    ...children: Array<string>
+  ) {
+    return tag(tagName, attributesOrFirstChild, ...children);
+  };
+}
+
+/**
  * character reference to no-break space
  */
 export const NBSP = "&nbsp;";
