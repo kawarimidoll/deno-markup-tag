@@ -18,6 +18,24 @@ function isVoidTag(tagName: string): boolean {
   ].includes(tagName);
 }
 
+function parseAttributes(
+  attributes: Record<string, string | number | boolean> = {},
+): Array<string> {
+  const attrs: Array<string> = [];
+  Object.entries(attributes)
+    .forEach(([k, v]) => {
+      if (typeof v !== "boolean") {
+        // add the pair of key and value when the attribute is string or number
+        attrs.push(` ${k}="${v}"`);
+      } else if (v) {
+        // add just key key when the attribute is true
+        attrs.push(` ${k}`);
+      }
+      // skip when the attribute is false
+    });
+  return attrs;
+}
+
 /**
  * Render markup tag.
  * @param tagName (required)
@@ -75,21 +93,11 @@ export function tag(
     throw new Error("tagName has whitespace characters.");
   }
 
-  const attrs: Array<string> = [];
+  let attrs: Array<string> = [];
   if (typeof attributesOrFirstChild === "string") {
     children.unshift(attributesOrFirstChild);
-  } else if (attributesOrFirstChild != null) {
-    Object.entries(attributesOrFirstChild)
-      .forEach(([k, v]) => {
-        if (typeof v !== "boolean") {
-          // add the pair of key and value when the attribute is string or number
-          attrs.push(` ${k}="${v}"`);
-        } else if (v) {
-          // add just key key when the attribute is true
-          attrs.push(` ${k}`);
-        }
-        // skip when the attribute is false
-      });
+  } else {
+    attrs = parseAttributes(attributesOrFirstChild);
   }
 
   const close = isVoidTag(tagName) ? "" : `${children.join("")}</${tagName}>`;
@@ -168,22 +176,7 @@ export function tagVoid(
   tagName: string,
   attributes?: Record<string, string | number | boolean>,
 ): string {
-  const attrs: Array<string> = [];
-  if (attributes) {
-    Object.entries(attributes)
-      .forEach(([k, v]) => {
-        if (typeof v !== "boolean") {
-          // add the pair of key and value when the attribute is string or number
-          attrs.push(` ${k}="${v}"`);
-        } else if (v) {
-          // add just key key when the attribute is true
-          attrs.push(` ${k}`);
-        }
-        // skip when the attribute is false
-      });
-  }
-
-  return `<${tagName}${attrs.join("")}>`;
+  return `<${tagName}${parseAttributes(attributes).join("")}>`;
 }
 
 /**
