@@ -1,7 +1,7 @@
 import {
   assertEquals,
   assertThrows,
-} from "https://deno.land/std@0.201.0/testing/asserts.ts";
+} from "https://deno.land/std@0.202.0/testing/asserts.ts";
 import { generateTag, sanitize, tag, tagNoVoid, tagVoid } from "./mod.ts";
 
 Deno.test("render tag", () => {
