@@ -2,7 +2,6 @@
 
 [![ci](https://github.com/kawarimidoll/deno-markup-tag/workflows/ci/badge.svg)](.github/workflows/ci.yml)
 [![deno version](https://img.shields.io/badge/deno-%5E1.13.0-green?logo=deno)](https://deno.land)
-[![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
 [![LICENSE](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 [![deno.land](https://img.shields.io/github/v/tag/kawarimidoll/deno-markup-tag?style=flat&logo=deno&label=deno.land&color=steelblue&sort=semver)](https://deno.land/x/markup_tag)
 [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/markup-tag)
