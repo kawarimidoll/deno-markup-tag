@@ -1,7 +1,5 @@
 {
-  "imports": {
-    "@std/assert": "jsr:@std/assert@^0.225.3"
-  },
+  "imports": { "@std/assert": "jsr:@std/assert@^0.226.0" },
   "lint-staged": {
     "*": "deno lint && deno fmt",
     "deno.jsonc": "deno task setup-hooks"
