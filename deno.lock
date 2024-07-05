@@ -17,21 +17,7 @@
       }
     }
   },
-  "remote": {
-    "https://deno.land/x/ptera@v1.0.0-beta/constants.ts": "61659e7f70136d73e0215d373fa815427f424a8b1596bf88ba62da4f542b4c2a",
-    "https://deno.land/x/ptera@v1.0.0-beta/convert.ts": "f4251fd3f46b7924fc70f2e81c13eeee9123897478b309e3117cc8b421386c81",
-    "https://deno.land/x/ptera@v1.0.0-beta/datetime.ts": "bcf4b80b4164dc0f4e374d9dfa8ccb3c9b5e4fb0d98d241bbb941f097e68db09",
-    "https://deno.land/x/ptera@v1.0.0-beta/diff.ts": "262cacd353e4feb923ae17845bcbd4368eeeb0e6557fc0d9069c7adfd920e080",
-    "https://deno.land/x/ptera@v1.0.0-beta/format.ts": "d56ee7bbf56bc19976197e1bf15f1d182a00a190c3103a6e544f0fd2f14d3ff6",
-    "https://deno.land/x/ptera@v1.0.0-beta/local_time.ts": "3836e80d81f1d4ba40fa266632076e0159cc58d1e2ffc23fccfb5249e1c5b780",
-    "https://deno.land/x/ptera@v1.0.0-beta/locale.ts": "ec9ef85d52f525e9cdb770dc391841d9ef6a72e84f88eff3c4114da7d0a986d1",
-    "https://deno.land/x/ptera@v1.0.0-beta/mod.ts": "741221c4e7c972d0d0a7745464dcd87611f41729d923b1e40f57ce24c44ae98b",
-    "https://deno.land/x/ptera@v1.0.0-beta/parse_date.ts": "51ba2b0917ef9015316b84072766286fd693df553930dfb52e024eb441c19d16",
-    "https://deno.land/x/ptera@v1.0.0-beta/timezone.ts": "4871b64bb0d5e01a968c51dbc34e724a5526149acfb5097f410dfb970bf505cb",
-    "https://deno.land/x/ptera@v1.0.0-beta/types.ts": "24b378ccf1f8e1783022ffe96312ef7c12deb39a62aa33832a3c3555954e663b",
-    "https://deno.land/x/ptera@v1.0.0-beta/utils.ts": "1651c7740fef85901af34bbfcd8d9bd467a4313b5a4d5074e2603f989f1ee77a",
-    "https://deno.land/x/ptera@v1.0.0-beta/zoned_time.ts": "d0578c18b534625c157eaea6daa88c71708b801f03793a05bc48ba492044191e"
-  },
+  "remote": {},
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@^0.226.0"
