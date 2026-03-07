@@ -1,4 +1,11 @@
-// types
+/**
+ * Attributes object for markup tags.
+ * Values can be strings, numbers, booleans, or string arrays.
+ * - `string | number`: rendered as `key="value"`
+ * - `true`: rendered as `key` (boolean attribute)
+ * - `false`: skipped
+ * - `string[]`: joined with spaces, rendered as `key="a b c"`
+ */
 export type Attributes = {
   [key: string]: string | number | boolean | string[];
 };
@@ -73,7 +80,7 @@ function parseAttributes(attributes: Attributes = {}): string[] {
  *   tag("button", { type: "button", disabled: true }, "disabled"),
  *   `<button type="button" disabled>disabled</button>`,
  * );
-
+ *
  * // skip attributes
  * assertEquals(
  *   tag("input", { type: "text", readonly: false }),
