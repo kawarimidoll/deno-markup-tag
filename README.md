@@ -1,20 +1,13 @@
 # deno-markup-tag
 
 [![ci](https://github.com/kawarimidoll/deno-markup-tag/workflows/ci/badge.svg)](.github/workflows/ci.yml)
-[![deno version](https://img.shields.io/badge/deno-%5E1.13.0-green?logo=deno)](https://deno.land)
+[![JSR](https://jsr.io/badges/@kawarimidoll/markup-tag)](https://jsr.io/@kawarimidoll/markup-tag)
 [![LICENSE](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
-[![deno.land](https://img.shields.io/github/v/tag/kawarimidoll/deno-markup-tag?style=flat&logo=deno&label=deno.land&color=steelblue&sort=semver)](https://deno.land/x/markup_tag)
 
 ## Usage
 
-[![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/markup_tag/mod.ts)
-
-### Import
-
-From [deno.land/x](https://deno.land/x):
-
 ```ts
-import { tag } from "https://deno.land/x/markup_tag@0.4.0/mod.ts";
+import { tag } from "@kawarimidoll/markup-tag";
 ```
 
 ### tag

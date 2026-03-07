@@ -37,8 +37,8 @@ function parseAttributes(attributes: Attributes = {}): string[] {
  * Examples:
  *
  * ```ts
- * import { tag } from "https://deno.land/x/markup_tag/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ * import { tag } from "@kawarimidoll/markup-tag";
+ * import { assertEquals } from "@std/assert"
  *
  * // common usage
  * assertEquals(
@@ -104,8 +104,8 @@ export function tag(
  * Examples:
  *
  * ```ts
- * import { tag, tagNoVoid } from "https://deno.land/x/markup_tag/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ * import { tag, tagNoVoid } from "@kawarimidoll/markup-tag";
+ * import { assertEquals } from "@std/assert"
  *
  * // in tag(), skip attributes in void tags like 'link'
  * assertEquals(
@@ -145,8 +145,8 @@ export function tagNoVoid(
  * Examples:
  *
  * ```ts
- * import { tag, tagVoid } from "https://deno.land/x/markup_tag/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ * import { tag, tagVoid } from "@kawarimidoll/markup-tag";
+ * import { assertEquals } from "@std/assert"
  *
  * // in tag(), add close tag like 'div'
  * assertEquals(
@@ -177,8 +177,8 @@ export function tagVoid(tagName: string, attributes?: Attributes): string {
  * Examples:
  *
  * ```ts
- * import { generateTag } from "https://deno.land/x/markup_tag/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ * import { generateTag } from "@kawarimidoll/markup-tag";
+ * import { assertEquals } from "@std/assert"
  *
  * const div = generateTag("div");
  * assertEquals(
@@ -278,8 +278,8 @@ export const QUOT = "&quot;";
  * Examples:
  *
  * ```ts
- * import { sanitize } from "https://deno.land/x/markup_tag/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts"
+ * import { sanitize } from "@kawarimidoll/markup-tag";
+ * import { assertEquals } from "@std/assert"
  *
  * // common usage
  * assertEquals(
