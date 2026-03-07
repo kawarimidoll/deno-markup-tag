@@ -4,7 +4,6 @@
 [![deno version](https://img.shields.io/badge/deno-%5E1.13.0-green?logo=deno)](https://deno.land)
 [![LICENSE](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 [![deno.land](https://img.shields.io/github/v/tag/kawarimidoll/deno-markup-tag?style=flat&logo=deno&label=deno.land&color=steelblue&sort=semver)](https://deno.land/x/markup_tag)
-[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/markup-tag)
 
 ## Usage
 
@@ -16,18 +15,6 @@ From [deno.land/x](https://deno.land/x):
 
 ```ts
 import { tag } from "https://deno.land/x/markup_tag@0.4.0/mod.ts";
-```
-
-From [x.nest.land](http://nest.land):
-
-```ts
-import { tag } from "https://x.nest.land/markup-tag@0.4.0/mod.ts";
-```
-
-From [pax.deno.dev](http://pax.deno.dev):
-
-```ts
-import { tag } from "https://pax.deno.dev/kawarimidoll/deno-markup-tag@0.4.0";
 ```
 
 ### tag
