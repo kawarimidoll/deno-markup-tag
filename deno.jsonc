@@ -5,7 +5,6 @@
   "imports": { "@std/assert": "jsr:@std/assert@^1.0.19" },
   "tasks": {
     "ci": "deno lint && deno fmt --check && deno test",
-    "cov": "deno test --coverage=cov_profile && deno coverage cov_profile",
-    "update": "deno run --allow-env --allow-read --allow-write=. --allow-run=git,deno --allow-net=jsr.io jsr:@molt/cli deno.jsonc --write"
+    "cov": "deno test --coverage=cov_profile && deno coverage cov_profile"
   }
 }
