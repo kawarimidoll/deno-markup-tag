@@ -81,6 +81,21 @@ Deno.test("render svg tag", () => {
   );
 });
 
+Deno.test("render array attributes", () => {
+  assertEquals(
+    tag("div", { class: ["foo", "bar"] }, "Hello"),
+    `<div class="foo bar">Hello</div>`,
+  );
+  assertEquals(
+    tag("a", { rel: ["noopener", "noreferrer"], href: "#" }, "link"),
+    `<a rel="noopener noreferrer" href="#">link</a>`,
+  );
+  assertEquals(
+    tag("div", { class: [] }),
+    `<div class=""></div>`,
+  );
+});
+
 Deno.test("render boolean attributes", () => {
   assertEquals(
     tag("button", { type: "button", disabled: false }, "enabled"),

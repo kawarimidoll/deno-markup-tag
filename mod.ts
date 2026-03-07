@@ -1,5 +1,7 @@
 // types
-export type Attributes = { [key: string]: string | number | boolean };
+export type Attributes = {
+  [key: string]: string | number | boolean | string[];
+};
 
 // internal helper
 function isVoidTag(tagName: string): boolean {
@@ -14,12 +16,20 @@ function parseAttributes(attributes: Attributes = {}): string[] {
   const attrs: string[] = [];
   Object.entries(attributes)
     .forEach(([k, v]) => {
-      if (typeof v !== "boolean") {
+      if (Array.isArray(v)) {
+        // join array values with space (e.g. class: ["foo", "bar"] => class="foo bar")
+        const value = sanitize(v.join(" "), {
+          amp: false,
+          lt: false,
+          gt: false,
+        });
+        attrs.push(` ${k}="${value}"`);
+      } else if (typeof v !== "boolean") {
         // add the pair of key and value when the attribute is string or number
         const value = sanitize(`${v}`, { amp: false, lt: false, gt: false });
         attrs.push(` ${k}="${value}"`);
       } else if (v) {
-        // add just key key when the attribute is true
+        // add just key when the attribute is true
         attrs.push(` ${k}`);
       }
       // skip when the attribute is false
