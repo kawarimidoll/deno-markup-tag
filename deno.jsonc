@@ -3,9 +3,10 @@
   "version": "1.0.1",
   "exports": "./mod.ts",
   "runtimes": ["deno", "node", "browser"],
+  "publish": { "include": ["mod.ts", "deno.jsonc", "LICENSE", "README.md"] },
   "imports": { "@std/assert": "jsr:@std/assert@^1.0.19" },
   "tasks": {
-    "ci": "deno lint && deno fmt --check && deno test",
+    "ci": "deno lint && deno fmt --check && deno test && deno publish --dry-run --allow-dirty",
     "cov": "deno test --coverage=cov_profile && deno coverage cov_profile"
   }
 }
